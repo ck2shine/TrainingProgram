@@ -1,5 +1,5 @@
 import UIKit
-
+import XCTest
 //Property-based Dependency Injection
 
 class DBData{
@@ -58,11 +58,17 @@ class Programmer{
     
 }
 
-let programmer = Programmer()
-programmer.pool =  SkillPool(.StrongCode)
-programmer.dbData = DBData()
+class ProgrammerTester : XCTestCase{
+    
+    func testDetail(){
+        let programmer = Programmer()
+        programmer.pool =  SkillPool(.weakCode)
+        programmer.dbData = DBData()
+        let result = programmer.getDetail()
+        print(result)
+        XCTAssert(result.0 == "John")
+        XCTAssert(result.1 == "Swift")
+    }
+}
 
-
-print(programmer.getDetail())
-
-
+ProgrammerTester().testDetail()
