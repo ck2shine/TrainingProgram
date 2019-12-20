@@ -1,0 +1,110 @@
+createdAt: "2019-11-29T02:08:02.202Z"
+updatedAt: "2019-12-20T05:54:31.032Z"
+type: "MARKDOWN_NOTE"
+folder: "c4f42085d33e4a0035ca"
+title: "Commit template"
+tags: []
+content: '''
+  # Commit template 
+  
+  ### 輸入規則
+  * 以下是常見的輸入規則，請依照每一個commit所修改內容的結構去撰寫對應的內容
+  
+  * 基本格式 :
+    1. 因``Fork``及``Source Tree``只會顯示第一行的緣故，請在第一行就將``type``輸入並且加入描述Title
+    ```
+    <type> : {此次commit的標題}
+  
+    Type分類如下:   
+    feat: 新功能
+    fix: Bug修復
+    docs: 文檔改變
+    style: 代碼格式改變
+    refactor: 功能重構
+    perf: 性能優化
+    test: 增加測試代碼
+    build: 改變build工具
+    ci: 與ci相關的設定
+    chore: 增加一些跟功能無關的檔案
+    3rd: 增加第三方
+    ```
+    2. 加入body，也就是詳細的修改內容
+    ```
+    <Body> : 具體的修改訊息，越詳細越好
+    ```
+    3. Footer，如果以後要跟``Jira``等專案管理軟體結合的話，基本上可以在這邊輸入**單號**
+    ```
+    <Footer>
+    可以使用像是 Closes PROJECT-1 或是 Resolves PROJECT-1 or Fixes PROJECT-1來代表關閉Issue或是bug
+    ```
+  * 完整範例如下 :
+    ```
+    fix: fix the textfield causes crash
+  
+    change textfield`s change event to other delegate metho
+  
+    Resolves TestingProject-010040
+    ```
+  
+  ### Git Template
+  * 依照對應路徑，將範本複製進去，即可在每次commit時出現參考範例
+  * 對應路徑依照軟體不同如下，請將他放在global裡面即可在每一次``commit``時進行對照
+  ### Path
+    - local path : 只針對每一個專案有效
+      ``` 
+      /~/commit_msg_template.txt 
+      ```
+    - global path 
+      ```
+      sourcetree -> Preferences>Commit Template
+      fork -> /Users/Account/.stCommitMsg
+      ```
+      
+  * 將以下範本複製到相對應的路徑
+  ```
+  
+  # commit basic template
+  # <Type>
+  # 請遵守下列標籤
+  # feat: 新功能
+  # fix: Bug修復
+  # docs: 文檔改變
+  # style: 代碼格式改變
+  # refactor: 功能重構
+  # perf: 性能優化
+  # test: 增加測試代碼
+  # build: 改變build工具
+  # ci: 與ci相關的設定
+  # chore: 增加一些跟功能無關的檔案
+  # 3rd: 增加第三方
+  # 
+  # <Footer>
+  # Resolves PROJECT-1 or Fixes PROJECT-1 
+  ```
+  
+  * 最後因為範本當中前面都有``#``號，為了避免符號也放進commit中，請執行以下指令，此時commit在提交時將會忽略``#``號
+  
+    ```
+    git config --global --add commit.cleanup strip
+    ```
+  
+  ***
+  
+  ### Reference
+  
+  1. [使用 git commit template 管理 git log - Dev Chill - Medium](https://medium.com/dev-chill/%E4%BD%BF%E7%94%A8-git-commit-template-%E7%AE%A1%E7%90%86-git-log-cb70f95fda2f)
+  2. [优雅的提交你的 Git Commit Message - 掘金](https://juejin.im/post/5afc5242f265da0b7f44bee4)
+  3. [GitHub - joelparkerhenderson/git_commit_template: Git commit template for better commit messages](https://github.com/joelparkerhenderson/git_commit_template)
+  4. [GitHub - joelparkerhenderson/git_commit_message: Git commit message: how to write a great git commit message and commit template for version control](https://github.com/joelparkerhenderson/git_commit_message)
+  5. [一份建议的git commit模板 · GitHub](https://gist.github.com/jmaxhu/8e7fb69a7dcec1b9b953)
+  6. [This commit message template that helps you write great commit messages and enforce it across your team. · GitHub](https://gist.github.com/zakkak/7e06725ebd1336bfebebe254de3de825)
+  7. [3. Git Commit Template · CodeDoesGood/business Wiki · GitHub](https://github.com/CodeDoesGood/business/wiki/3.-Git-Commit-Template)
+  
+  
+'''
+linesHighlighted: [
+  11
+  10
+]
+isStarred: false
+isTrashed: false
