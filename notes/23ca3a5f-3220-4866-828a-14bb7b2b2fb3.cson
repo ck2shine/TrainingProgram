@@ -1,0 +1,28 @@
+createdAt: "2019-12-23T03:43:00.369Z"
+updatedAt: "2019-12-23T06:10:42.850Z"
+type: "MARKDOWN_NOTE"
+folder: "3e4fb623d707702cf095"
+title: "Git File System{#git}"
+tags: []
+content: '''
+  # Git File System{#git}
+  ***
+  以往大家在開發APP時，對於分支管理上面並沒有太大的限制。再加上舊有的Git Server並沒有進行權限鎖定，就變得人人都可以修改任何的Branch，且大多只有定義**master為包版分支**、**develop為開發分支**，因此如果在包含每一個人都會為了**某某功能而進行開新的Branch**，最後結果就會使得整個Git專案變得非常雜亂，新進的PG根本不知道他應該從哪邊進入開發，或是衍伸出其他多更多問題，像是**Branch併不回來**等。因此提供大家一些簡單的**Git Flow**以及**Commit規範**供開發上的選擇。
+  
+  ## Git Flow
+  這邊介紹一些常用的flow，可以依照開發**專案的特性**以及**人員資深程度**進行選擇。
+  
+  - **GitHub Flow** : 適用於當專案很小、團隊成員還不太會使用Git時，或是僅需要1-2位PG即可以完成的話，那Git FLow將會是非常好的選擇。詳細的操作方式可以參考[GitHub Flow](https://guides.github.com/introduction/flow/)
+  
+  - **Git Flow** : 在2010年由Vincent Driessen提出的分支模型，讓大家可以遵守這個模型進行Branch開設以及每一次要Release新版本時的流程。而此模型相當嚴謹，對於每一個Branch流程都有相對的規範，不能隨意進行跨流程的合併等等。而每個Branch都受到一定權限的限制，因此不用太擔心主要的Branch會被破壞，更能在要合併到**develop分支**時加上**PR(pull reqeust)或MR(merge request)**，以確保程式品質，相對的在開發時間上也會比一般的流程來為長。細節可參考[Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
+  
+  - **Trunk Base Development** : 俗稱**TBD**，是一個適用於多人開發的Flow模式。並沒有像是**Git Flow**等master或是develop的概念，所有人同時在一條**Trunk base**的分支上開發。如此以來就可以解決像是**long lived develop branch**，常常開發一個feature很久，最後沒有辦法合併回主線的問題發生。但因為分支只有一條，因此就必須做好**CI**確保推上去的程式不會造成**compile fail**影響到所有團隊人員開發。此模式也較適合團隊擁有較**資深的開發人員**。詳細的TBD運作方法，會獨立一篇文章進行介紹。
+  
+  ## Commit
+  開發者在commit上，以往都不會進行限制，每個commit節點想要放多少隻程式、標題要怎麼下、內容要怎麼寫都沒有特定的要求，進而造成沒辦法很直覺地看出哪個commit點修改了什麼、要reset特定某些程式時，只能reset commit點上其他不需要被回覆的程式，維護上相當麻煩。
+  ## 選擇Git Flow
+  舉個例子來說，行動保險3.0專案優化共有**6位PG進行開發**，其中包含了**3位開發2年以上**的iOS開發人員，因此在Git Flow上選擇**Trunk Base**，而由於專案開發時程，目前並沒有設定任何的**PR**(往後會對較資淺的開發者加上)，而每人每天最少Commit一次
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

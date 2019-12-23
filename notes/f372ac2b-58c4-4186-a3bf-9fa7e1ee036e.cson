@@ -1,12 +1,14 @@
 createdAt: "2019-12-20T05:55:03.219Z"
-updatedAt: "2019-12-20T05:55:44.967Z"
+updatedAt: "2019-12-23T03:42:54.225Z"
 type: "MARKDOWN_NOTE"
 folder: "3e4fb623d707702cf095"
 title: "iOS APP開發規範"
 tags: []
 content: '''
   # iOS APP開發規範
-  
+  ***
+  為了使團隊在開發APP時能保持其品質與維護性，因此制定一套關於從**檔案系統**
+  、**APP架構**、**Swift(Obj-C)**、**CI/CD** 等規範，希望能夠藉此培養成員間開發默契與提升自己技術能力。
 '''
 linesHighlighted: []
 isStarred: false
