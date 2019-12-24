@@ -1,5 +1,5 @@
 createdAt: "2019-12-23T03:43:00.369Z"
-updatedAt: "2019-12-23T06:10:42.850Z"
+updatedAt: "2019-12-24T09:09:02.842Z"
 type: "MARKDOWN_NOTE"
 folder: "3e4fb623d707702cf095"
 title: "Git File System{#git}"
@@ -16,12 +16,33 @@ content: '''
   
   - **Git Flow** : 在2010年由Vincent Driessen提出的分支模型，讓大家可以遵守這個模型進行Branch開設以及每一次要Release新版本時的流程。而此模型相當嚴謹，對於每一個Branch流程都有相對的規範，不能隨意進行跨流程的合併等等。而每個Branch都受到一定權限的限制，因此不用太擔心主要的Branch會被破壞，更能在要合併到**develop分支**時加上**PR(pull reqeust)或MR(merge request)**，以確保程式品質，相對的在開發時間上也會比一般的流程來為長。細節可參考[Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
   
-  - **Trunk Base Development** : 俗稱**TBD**，是一個適用於多人開發的Flow模式。並沒有像是**Git Flow**等master或是develop的概念，所有人同時在一條**Trunk base**的分支上開發。如此以來就可以解決像是**long lived develop branch**，常常開發一個feature很久，最後沒有辦法合併回主線的問題發生。但因為分支只有一條，因此就必須做好**CI**確保推上去的程式不會造成**compile fail**影響到所有團隊人員開發。此模式也較適合團隊擁有較**資深的開發人員**。詳細的TBD運作方法，會獨立一篇文章進行介紹。
+  - **Trunk Base Development** : 俗稱[**TBD**](https://trunkbaseddevelopment.com/)，是一個適用於多人開發的Flow模式。並沒有像是**Git Flow**等master或是develop的概念，所有人同時在一條**Trunk base**的分支上開發。如此以來就可以解決像是**long lived develop branch**，常常開發一個feature很久，最後沒有辦法合併回主線的問題發生。但因為分支只有一條，因此就必須做好**CI**確保推上去的程式不會造成**compile fail**影響到所有團隊人員開發。此模式也較適合團隊擁有較**資深的開發人員**。詳細的TBD運作方法，會獨立一篇文章進行介紹。
   
   ## Commit
   開發者在commit上，以往都不會進行限制，每個commit節點想要放多少隻程式、標題要怎麼下、內容要怎麼寫都沒有特定的要求，進而造成沒辦法很直覺地看出哪個commit點修改了什麼、要reset特定某些程式時，只能reset commit點上其他不需要被回覆的程式，維護上相當麻煩。
+  因此在放上commit時，有幾點事項需要注意 : 
+  - 依照**功能類別**或是**專案管理軟體 (ex: Jira) 編號**將修改的程式commit成一個節點並且**Push**上去。
+  - commit message請依照 [commit template]() 填寫。
+  
+  ## Before merge
+  當開發告一段落，要將自己的feature合併到主線時，依照使用的Flow不同有不同的處理方式 
+  #### GitFlow :
+  - rebase目標分支解決衝突
+  - 將本地大量commit整理(squash)成少數節點
+  - 提交PR(MR)
+  - 合併方式使用``non fast-forward``指令進行合併，為的是留下此feature的開發紀錄
+  
+  #### TBD : 
+  - **Push**之前如有更新，**請使用rebase方式**取代merge進行pull
+  - 每天至少commit一次並進行**Push**
+  
   ## 選擇Git Flow
-  舉個例子來說，行動保險3.0專案優化共有**6位PG進行開發**，其中包含了**3位開發2年以上**的iOS開發人員，因此在Git Flow上選擇**Trunk Base**，而由於專案開發時程，目前並沒有設定任何的**PR**(往後會對較資淺的開發者加上)，而每人每天最少Commit一次
+  綜合以上重點，以一個例子來說明 : 
+  ```
+  行動保險3.0專案優化共有6位PG進行開發，其中包含了**3位開發2年以上**的iOS開發人員，而由於專案開發時程，目前並沒有設定任何的**PR**(往後會對較資淺的開發者加上)，而每人每天最少Commit一次
+  ```
+  因團隊開發者多非初學PG，因此在Git Flow上選擇**Trunk Base**，而由於專案需快速開發，目前並沒有設定任何的**PR**需求(往後會對較資淺的開發者加上)，每人每天至少``commit``一次，且需對開發程式進行分類，打上對應的``commit message``。
+  
 '''
 linesHighlighted: []
 isStarred: false
