@@ -1,5 +1,5 @@
 createdAt: "2019-12-24T09:09:43.287Z"
-updatedAt: "2019-12-24T09:10:10.707Z"
+updatedAt: "2019-12-25T09:43:13.456Z"
 type: "MARKDOWN_NOTE"
 folder: "3e4fb623d707702cf095"
 title: "開發架構{#Architecture}"
@@ -7,6 +7,42 @@ tags: []
 content: '''
   # 開發架構{#Architecture} 
   ***
+  好的APP開發架構對於團隊無論在協同合作與維護上都有相當大的幫助。如今可以選擇的架構模式許多種，但重點不要為用而用，而是評估專案內容後再挑選一套適合的架構。而架構內容網路已有許多種類，這邊就列出一些比較常見的 :
+  
+  - **MVC**是最基本的開發架構，但如果開發者在撰寫時沒有好好規劃Model的開發，常常會有**Massive Controller**、**untestable Code**、**high coupling**等問題。MVC架構不是不好，最主要取決在於大家都從controller開始寫，最後就變成所有東西都擠在這裡面，Model就發揮不到他的用處了。在好好規劃程式內容之下，MVC還是可以發揮他開發快速等效用。
+  - **MVVM**將程式劃分成許多部分，依照角色區分，撰寫不同的程式碼，解決MVC上述的三個問題。在規範上會產生的類別有 : 
+    1. **View** 只包含畫面呈現的內容、元件等，**不會包含任何業務邏輯**。主要是與ViewModel進行綁定，處理有關於UI等相關任務。
+    2. **ViewModel** 主要的內容為**綁定屬性(property binding)** 以及**業務邏輯(business logic)**。在綁定(data binding)的選擇上有很多，可以依照團隊成員的資深程度選擇像是簡單的**Box binding (closure binding)** 或是需要一點學習成本的 **RxSwift**。而在開發viewModel時，應該考慮到**testable**而使用[DI (dependancy injection)]() 將model解除耦合，請參考詳細文章。
+    3. **Controller** 用於在流程的管理，像是 1) 呼叫後台取得資料 2) 進行資料計 3) 畫面UI呈現 ，這類的流程就可以寫在controller裡頭，因為在測試時主要以**Unit Testing**為主，因此針對**ViewModel**內的主要business logic核心方法測試即可。整體流程將會於**UI Testing**進行。
+    4. **Model** 主要是寫一些通用模組，像是**網路API**、**DBIO**等共用程度高的程式。常常有一些功能應該考慮從**viewModel**內獨立出來成為一支Model。
+  
+    綜合上述幾點，一個基本的功能會包含**4個檔案**，在開發上其實是比MVC來得相對的費工，且會依照開發程度對於View與ViewModel邏輯的切分也有所不同，但因為帶來的好處可以解決許多痛點，在學習上還是必須的。
+  
+  - **MVVMC** 是基於MVVM的架構之上，再加上一層**協調者 ( Coordinator )**，讓View與View之間的轉場動畫以及參數傳遞都透過協調者實作，使得解除View之間的**相依性( depedancy)**。
+  
+    使用coordinator前 : 
+      ```swift
+       //A controller has a depedancy with B controller
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
+            if let detailVC = segue.destination as? TrainDetailViewController , let trainInfoData = sender as? TrainInfo{
+                detailVC.trainInfoData = trainInfoData
+            }        
+        }
+      ```
+      使用coordinator後，交由**coordinator**進行處理 :
+    ```swift
+    extension TrainListCoordinator : TrainListViewControllerDelegate{
+        func didSelectTrainDetail(_ selectedTrainInfo: TrainInfo) {
+  
+            let trainDetailCoordinator =  TrainDetailCoordinator(viewController: self.presenter , loadDataObj: self.dependency!, selectedTrainInfo: selectedTrainInfo)
+  
+            trainDetailCoordinator.start()
+            self.trainDetailCoordinator = trainDetailCoordinator
+        }    
+    }
+    ```
+    讓View變得更單純，更可以搭配ViewModel以DI的方式開發後，讓View根據viewModel的狀態不同而達到View的重用性，更可以讓你的viewModel在測試上更為方便。
+  
 '''
 linesHighlighted: []
 isStarred: false
