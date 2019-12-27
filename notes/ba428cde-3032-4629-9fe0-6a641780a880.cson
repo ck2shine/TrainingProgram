@@ -1,5 +1,5 @@
 createdAt: "2019-12-24T09:09:43.287Z"
-updatedAt: "2019-12-25T09:43:13.456Z"
+updatedAt: "2019-12-26T09:04:58.213Z"
 type: "MARKDOWN_NOTE"
 folder: "3e4fb623d707702cf095"
 title: "開發架構{#Architecture}"
@@ -43,6 +43,21 @@ content: '''
     ```
     讓View變得更單純，更可以搭配ViewModel以DI的方式開發後，讓View根據viewModel的狀態不同而達到View的重用性，更可以讓你的viewModel在測試上更為方便。
   
+  ## Hybrid APP
+  - [Flutter](https://flutter.dev/) 最近很火熱的跨平台開發環境，號稱可以開發一次就可以適用在**Web、iOS、Android**。他是以``Dart``程式語言撰寫，引擎是架構在``C++``之上。在以往會透過``JavaScript``進行bridge時而導致效能低下，取爾代之是提前先編譯成多個平台的原生程式碼，改善APP啟動的時間。
+  - 使用Flutter的好處在於所有平台的介面達到**統一**，所有的畫面都只要開發一次就可以適用在各個平台上，當然如果像是有用到需要連接**Device**裝置部分，像是藍牙操作等等，Flutter也有提供一些[platform-specific APIs](https://flutter.dev/docs/development/platform-integration/platform-channels)操作連結到你寫的原生Code。
+  - 不過Flutter寫到最後，你還是在做**Native APP**，原本的**Provisioning Profile、App Signing**還是需要的，連CI、CD的流程也還是一樣。因此比較建議熟了Native的開發再嘗試使用跨平台開發。而最適用的專案是原本網頁版的功能要轉App，一些需要使用**Device**的App,像是照相、on device AI ( CoreML )建議還是用原生寫吧。
+  
+  ## 選擇架構
+  在選擇架構前，應該很清楚目前專案是有怎麼樣的特性、開發團隊以及時程，再去選擇。舉個例子來說:
+  - 行動投保3.0因為是大型專案，包含了許多業務邏輯以及第三方套件，也用到了一些Device裝置，在架構上選擇**MVVMC**，最主要目的除了要藉由大量的測試業務邏輯達到**App穩定**外，行動投保也擁有大量的業務邏輯畫面導致編譯速度效能過於低下，須藉由**Coordinator**畫面解藕合並以Framework的方式加快專案編譯效能。而內建套件**Cathay component**有許多共用的View ( Collection Cell) ，也可以由不同的viewModel達到畫面共用。
+  - 行動外勤報升系統，畫面較為簡單偏向網頁的模式。再加上並沒有使用到太多核心的Device且為小型專案，因此則選用**Flutter**進行開發。
+  
+  往後將會以**MVVMC**當作預設的開發架構，並依照專案特性進行調整。
+  
+  ***
+  ### Reference 
+  > [MVVM簡介](https://www.codementor.io/@koromiko/mvvm-app-cl1wvw2sh)
 '''
 linesHighlighted: []
 isStarred: false

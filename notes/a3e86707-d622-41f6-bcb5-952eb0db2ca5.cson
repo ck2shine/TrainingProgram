@@ -1,0 +1,32 @@
+createdAt: "2019-12-26T02:46:23.411Z"
+updatedAt: "2019-12-26T09:23:41.578Z"
+type: "MARKDOWN_NOTE"
+folder: "3e4fb623d707702cf095"
+title: "Swift & Project Setting"
+tags: []
+content: '''
+  # Swift & Project Setting
+  ***
+  ## 專案設定
+  為了符合現行backend之架構，以及結合CI/CD及測試，需將專案調整成以下內容 : 
+  - 根據後台之環境數量，設置對應之``scheme``數量，基本包含``debug``、``stage``、``release``，並有相關之``Configuration``檔案。
+  ![80afda95.png](:storage/a3e86707-d622-41f6-bcb5-952eb0db2ca5/80afda95.png)
+  
+    **Configuration** :
+   ![config.png](:storage/a3e86707-d622-41f6-bcb5-952eb0db2ca5/72815ff9.png)
+  
+  * 測試Target應至少包含
+    * **SanityUnitTest** 給每次上commit時的CI會跑，主要是每個功能最主要的核心Function。
+    * **UnitTest** 每天進行CD時會跑一次的Regression Test，包含所有針對viewModel的Unit testing案例。
+    * **CucumberTest** BDD Testing，由SA列出的關鍵流程，也是每天進行CD時會跑一次。
+    
+    ![testcheme.png](:storage/a3e86707-d622-41f6-bcb5-952eb0db2ca5/e9b0c9b1.png)
+  - 在preprocessing加入對應的Macro變數，目的是讓**各個內制framework可以發request到相對應的環境(debug、stage、release)**
+  ![preprocess.png](:storage/a3e86707-d622-41f6-bcb5-952eb0db2ca5/1081fcb1.png)
+  - 為了使開發上更為快速，可以參考[加速專案Compile]()。
+  ## Swift程式碼
+  在程式碼的架構上，是使用 [Swift lint](https://github.com/realm/SwiftLint) 來對程式碼進行規則檢測以及排版，詳細規則可以參考 [Rules of Code]()。任何commit及CI時，都會掃一次，必須要通過檢查才會算Build成功。
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
