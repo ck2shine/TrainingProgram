@@ -1,5 +1,5 @@
 createdAt: "2019-12-23T03:43:00.369Z"
-updatedAt: "2019-12-24T09:09:02.842Z"
+updatedAt: "2019-12-29T15:03:05.977Z"
 type: "MARKDOWN_NOTE"
 folder: "3e4fb623d707702cf095"
 title: "Git File System{#git}"
@@ -25,7 +25,20 @@ content: '''
   - commit message請依照 [commit template]() 填寫。
   
   ## Before merge
-  當開發告一段落，要將自己的feature合併到主線時，依照使用的Flow不同有不同的處理方式 
+  當開發告一段落，要將自己的feature合併到主線時，依照使用的Flow不同有不同的處理方式，在一般的工程當中，我們都會規定 **No conflict merge** ，一但要merge到主線的feature發生了衝突，是不允許merge的。這種情況下當然把主線merge回來feature是最好的選擇，但是缺點就會引入了一次不必要的join。像是下圖的``X merge commit``就是非必要的。
+  ```git
+       C--D----X  feature
+      /       / \\
+  A--B---E---F---G  master
+  ```
+  因此可使用``rebase``的方式，將``branch out出去的點位址修改``
+  ```git
+                   C--D  feature
+                  /
+  A--B---E---F---G  master
+  ```
+  在``rebase``的過程當中就可以馬上解決``conflict``的問題，如此一來少了一個merge commit點，最終在合併回去主線(master)時就不造成衝突。
+  最終不管是使用merge或是rebase，都是在解決**merge conflict**的問題。而使用rebase將可以減少**history join**導致團隊成員在看歷史commit時之**認知成本**。
   #### GitFlow :
   - rebase目標分支解決衝突
   - 將本地大量commit整理(squash)成少數節點
@@ -43,6 +56,9 @@ content: '''
   ```
   因團隊開發者多非初學PG，因此在Git Flow上選擇**Trunk Base**，而由於專案需快速開發，目前並沒有設定任何的**PR**需求(往後會對較資淺的開發者加上)，每人每天至少``commit``一次，且需對開發程式進行分類，打上對應的``commit message``。
   
+  ***
+  #### Refernce :
+  > [merge vs rebase](https://www.zhihu.com/question/36509119/answer/131513261)
 '''
 linesHighlighted: []
 isStarred: false

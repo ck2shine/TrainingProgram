@@ -14,6 +14,11 @@
       "key": "c4f42085d33e4a0035ca",
       "color": "#E8D252",
       "name": "Git"
+    },
+    {
+      "key": "f013db434d4af5817738",
+      "color": "#FF8E00",
+      "name": "ToDoList"
     }
   ],
   "version": "1.0"
