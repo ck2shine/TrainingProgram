@@ -1,0 +1,66 @@
+createdAt: "2020-06-24T03:31:06.556Z"
+updatedAt: "2020-06-24T03:31:13.778Z"
+type: "MARKDOWN_NOTE"
+folder: "16904c786f4d8853e6f8"
+title: "Firebase CLI"
+tags: []
+content: '''
+  # Firebase CLI
+  整合完成專案至Firebase以後，接著就是安裝Firebase CLI
+  
+  
+  Step1. 在macOS的作業系統上，安裝CLI非常簡單，只要打開 **command line** 輸入以下指令即可
+  
+  
+  ```
+  $ curl -sL firebase.tools | bash
+  
+  ```
+  
+  Step2. 安裝完成後，接著登入**Firebase CLI**
+  
+  ```
+  $ firebase login
+  
+  ```
+  
+  * 接著Firebase會詢問你是否可以收集錯誤報告，如果不需要此處可以按下**N**
+  
+  ```
+  ? Allow Firebase to collect CLI usage and error reporting information? (Y/n) ```
+  
+  * 輸入指令以後，**會帶起瀏覽器進行Google帳號登入驗證**，待完成登入並信任Firebase以後，便出現成功登入Firebase的訊息
+  
+  ![](../../../assets/cli1.png)
+  在command Tool會看到以下訊息，接著就可以在本機上使用Firebase各項功能
+  
+  ```
+  ✔ Success! Logged in as xxxxxx@gmail.com
+  ```
+  
+  
+  ####在CI機器上安裝Firebase CLI####
+  一般情況都是使用安裝在CI機器上進行發布beta給使用者測試，因此想在CI的機器上進行Firebase的各項能的話，就必須使用token的方式讓CI機器使用管理者帳號保持登入的狀態。
+  **執行以下指令以取得Token**
+  
+  ```
+  $ firebase login
+  
+  ```
+  * 與一般登入相同，在驗證過瀏覽器之後，回到``command line tool``會發現畫面多了一組**token**，可以使用下面方法將token放至CI執行環境：
+  
+  1.將其token存放至執行環境之**環境變數**當中，名稱為**FIREBASE_TOKEN**
+  或
+  2.執行指令``--token <your token>``，將token標記在執行環境當中
+  
+  ***
+  ### Reference : ###
+  > [Firebase CLI install](https://firebase.google.com/docs/cli#install_the_firebase_cli)
+  
+  
+  
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

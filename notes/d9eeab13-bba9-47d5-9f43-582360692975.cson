@@ -1,0 +1,49 @@
+createdAt: "2020-06-24T03:30:54.465Z"
+updatedAt: "2020-06-24T03:31:05.716Z"
+type: "MARKDOWN_NOTE"
+folder: "16904c786f4d8853e6f8"
+title: "Fabric to Firebase"
+tags: []
+content: '''
+  # Fabric to Firebase
+  
+  最簡單的方法即是至Fabric Dashboard頁面進行整合，將會有步驟指引專案移轉。
+  
+  ##### 按下**Migrate app to Firebase**按鈕即可開始進行。
+  ![](../../../assets/fabric1.png)
+  
+  ##### 登入Firebase Admin帳號進行專案轉移
+  
+  此處帳號請用**公司或是個人的管理帳號**登入，以利專案都整合在同一個帳號之上。
+  
+  ![](../../../assets/fabric2.png)
+  
+  ##### 按下Migrate apps開始進行專案轉移
+  
+  ![](../../../assets/fabric3.png)
+  
+  ##### 依照步驟選擇要合併的專案
+  
+  * Step1. 選擇你想整合至Firebase專案
+  
+  * Step2-1. 將專案拖曳到將會在**Firebase上產生新的Project**
+  
+  * Step2-2. 或是可以選擇**現有Firebase上之專案**
+  
+  * Step3. 按下Next開始進行轉移![](/assets/fabric3.png)
+  ![](../../../assets/fabric4.png)
+  
+  ##### 出現整合確認畫面
+  
+  * 按下Migrate apps進行整合
+  
+  ![](../../../assets/fabric5.png)
+  
+  ##### 整合完成
+  
+  * 進入Firebase Dashboard畫面即可看到已經整合進入此Project之所有APP，接著就可以進行各項功能
+  ![](../../../assets/fabric6.png)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

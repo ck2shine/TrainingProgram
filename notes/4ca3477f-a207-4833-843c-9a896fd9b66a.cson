@@ -1,0 +1,88 @@
+createdAt: "2020-06-24T03:31:19.346Z"
+updatedAt: "2020-06-24T03:31:23.693Z"
+type: "MARKDOWN_NOTE"
+folder: "16904c786f4d8853e6f8"
+title: "Firebase iOS SDK"
+tags: []
+content: '''
+  # Firebase iOS SDK
+  安裝Firebase SDK的方式有很多種，以下使用**Carthage**的方式進行安裝，如有需要**Cocoapods**，可以參考以下[連結](https://firebase.google.com/docs/ios/setup)
+  
+  依照需求功能新增對應之binary，在此先使用**Distribution功能**，因此新增**FirebaseAnalyticsBinary**
+  * 修改**cartfile**
+  ```
+  binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"```
+  其他功能之binary url，可以參考[官方網站](https://firebaseopensource.com/projects/firebase/firebase-ios-sdk/carthage.md/)
+  
+  * 打開command line 執行以下指令
+  ```
+  $ carthage update --platform ios
+  ```
+  
+  * 複製專案目錄底下``Carthage\\Build\\iOS``新產的**Firebase Framework**至iOS專案當中
+  **Build Phases > Linking Binary With Libraries > + > Add otherFile > 選取Firebase所新增之Frameworks**![](/assets/iossdk1.png)
+  **注意!因這些Frameworks皆屬於靜態(static frameworks)，不要加到embed Framework當中**
+  
+  * 加入 **Build Settings > Other Linker Flag屬性**為``$(OTHER_LDFLAGS) -ObjC``
+  
+  
+  
+  * 打開command line tool並切換至此iOS專案底下，並執行以下指令
+  ```
+  $ fastlane add_plugin firebase_app_distribution```
+  完成後會在專案資料夾當中出現三份檔案，分別如下：
+  ```
+  Gemfile
+  Gemfile.lock
+  fastlane\\Pluginfile
+  ```
+  並將三個檔案放至專案目錄當中。
+  注意如果是要跑在CI Server上跑，**請在CI Server執行指令後並複製其三個產出檔案**到各個iOS專案當中
+  
+  * 複製GoogleService-Info.plist至**Xcode專案資料結構底下**，其檔案可以至Firebase Dashboard下載。![](/assets/iossdk2.png)
+  
+  * 如果你的專案有使用``Bitcode`` 可以把Firebase.framework從Link Binary當中刪除，此Framework會使專案無法使用``Bitcode``
+  
+  
+  ####於AppDelegate導入Framework與新增程式碼 ####
+  
+  
+  * Swift
+  ```swift
+  import UIKit
+  import Firebase
+  @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+  FirebaseApp.configure()
+  return true
+  }
+  }
+  ```
+  
+  * Objective-C
+  ```swift
+  #import "AppDelegate.h"
+  #import <Firebase/Firebase.h>
+  @interface AppDelegate ()
+  -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  [FIRApp configure];
+  
+  return YES;
+  }
+  ```
+  ####最後只要依照功能去修改相對應的``Fastlane``相關設定即可####
+  
+  ***
+  ### Reference : ###
+  > [Firebase SDK by Carthage](https://firebaseopensource.com/projects/firebase/firebase-ios-sdk/carthage.md/)
+  > [Remove Firebase framework](https://github.com/firebase/firebase-ios-sdk/issues/911)
+  
+  
+  
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,48 @@
+createdAt: "2020-06-24T03:09:38.129Z"
+updatedAt: "2020-06-24T03:10:11.244Z"
+type: "MARKDOWN_NOTE"
+folder: "3e4fb623d707702cf095"
+title: "Fast by Design"
+tags: []
+content: '''
+  # Fast by Design
+  ***
+  一些好的開發小訣竅，可以讓我們在開發iOS APP的時候更快速。而當中最重要的，就是一套APP的效能(performance)。永遠把效能當作一個APP的基礎，在開發時永遠把它當作優先考量。以下將會針對特定的小技巧做介紹：
+  
+  #### Background Task
+  在處理龐大運算，如資料處理、或是將檔案格式轉成可用資料(ex : json to Object and process data logic)。可以考慮將以下任務放置於``background``的序列``queue``裡面執行，簡單來說就是開一條``global queue``進行運算，不但可以讓使用者體驗提升，同時利用multi thread的特性幫助我們APP在操作時更順暢。這邊的資料操作請注意是在於那些處理資料的邏輯，如有**操作到DataBase** 如``SQLite``等操作，請注意會有``Thread issue``等問題。
+  只要你的功能，有可能明顯地去阻擋到``main thread``造成卡卡的，都應該這麼做去優化他。盡量可以在原本自己的模組內就將它完成，不要太多的相依性，像是使用``KVO``或是``Notification``等等去驅動完成模組後該做什麼事情。那如果怕因為讓使用者等太久，可以使用**縮圖、預覽圖**等等方式。
+  
+  #### Single Changes
+  應該避免改變一個屬性時，就利用``KVO、Notification``等方式去驅動後續的動作，像是寫入資料庫等等..。想像如果今天很簡單只是改變在**UITableView**裡面的單一``row``項目，就進行改變資料庫的狀態，如果當今天有個操作是**全選**或是**全改變**時，就會以``for each``的方式去驅動每一個``binding``，那將會造成效能負擔非常的大。
+  良好的設計應該遵循 :
+  * 利用集合``Collection``來記錄這些物件的狀態
+  * 在每次改變完後，利用**API**只進行一次的計算與**狀態的永遠保存**
+  
+  #### Database
+  縱使``Core Data``很方便也很好用，但我們應該多使用``SQLite``，像是使用第三方套件``FMDB``或其他資料庫讀取模組，讓你像是在操作資料庫那樣的直覺。甚至於是可以去優化我們的``schema``或是``index``。這都是``Core Data``辦不到的行為。而當你使用了資料庫，因該想辦法盡量將資料庫處於可以使用``multi thread``的情況之下，而非去阻擋``main thread``，才能夠達到良好的使用者體驗。
+  而如果想要使你的資料庫讀取更快，可以考慮SQLite的[Full Text Search extension](https://www.sqlite.org/fts5.html)技術。
+  
+  #### Data Collections
+  我們常常在做資料搜尋的動作，像是在一大群物件中，根據某個ID去抓取某個資料出來，這時候**請盡量避免去確認陣列中是否有某個物件**，這將會非常耗效能，應該善用最基本的物件集合``Set``這個類別，他將很方便的時間複雜度``O(1)``，將比陣列的``O(n)``好上很多。當然在你需要將資料進行**排列**時，陣列還是你的最佳選擇。
+  
+  #### Instrument - Time profiler
+  當一個功能開發完畢以後，發現他相當的慢，就不要再用``print()``或是插入``currentTime``等方式去計算時間了。請直接使用**Instrument裡面的Time Profiler**工具來進行程式碼分析。往往都是在意想不到的地方造成你效能不佳。詳細的使用發法可以參考[iOS性能優化Time Profiler](https://juejin.im/post/5b611766f265da0f800df59a)。
+  
+  #### UIStackView
+  這是一個非常方便的元件，快的``prototyping``讓他變得相當受歡迎。但他的效能非常的不好，在開發**複雜**的畫面時，應該盡量避免使用``UIStackView``。
+  
+  #### Scrolls UITableView Like butter!
+  開發出來的APP會不會常常在**scroll**時有不順暢或是卡卡的情況發生，使用``Auto layout``非常的棒，可以快速的佈局你的APP畫面，但如果想要讓``UITableView``或是``UICollectionView``更平滑的滾動，請自行寫``auto layout code``在你的``cell``裡頭，不要直接使用``interface builder``去拉``coinstraint``，他將會有更好的畫面瀏覽體驗。當然你也可以全部都使用**code**的方式來編排你的畫面，如此將會更節省APP的空間，且你能隨時隨的藉由改變你的``auto layout code``的數字，來快速呈現UI的改變。
+  想學更多``auto layout programmatically``，可以參考[Ep1](https://www.youtube.com/watch?v=9RydRg0ZKaI)與[Ep2](https://www.youtube.com/watch?v=nv1L3mYEg8M)。
+  
+  #### Cache some thing
+  在做一些處理時，使用Cache將會有效地改善你的效能，像是使用``NSCache``存放的你的略縮圖(thunbnails)，或是儲存一些動態大小文字高度。例如在寬度為100時，如果此時使用18大小的文字，高度會是30，那麼你應該將此高度資訊存放在Cache裡面，當又有相同的需求產生時，將不要再次計算直接取用即可。
+  
+  ***
+  #### Reference :
+  > [Why NetNewsWire Is Fast](https://inessential.com/2020/05/18/why_netnewswire_is_fast)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

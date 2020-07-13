@@ -1,0 +1,61 @@
+createdAt: "2020-06-24T03:31:30.211Z"
+updatedAt: "2020-06-24T03:31:33.757Z"
+type: "MARKDOWN_NOTE"
+folder: "16904c786f4d8853e6f8"
+title: "Firebase Distribution"
+tags: []
+content: '''
+  # Firebase Distribution
+  
+  完成Firebase CLI與iOS SDK安裝以後，接著進行FastFile修改
+  
+  
+  ```html
+  platform :ios do
+  desc "My awesome app"
+  lane :distribute do
+  //1.build ios APP
+  build_ios_app(
+  scheme: "TestDistribution.debug",
+  export_options: {
+  method: "enterprise",
+  provisioningProfiles: "test.com.testDistrution"
+  }
+  )
+  
+  //2. 發布beta版本APP
+  firebase_app_distribution(
+  app: "x:53xx453:ios:afaxxda4", //2-1
+  testers: "xxxx1@company.com, xxx2@company.com",//2-2
+  release_notes: "testAPP!",//2-3
+  firebase_cli_path: "path/firebase/cli/binary"//2-4
+  )
+  end
+  end
+  
+  ```
+  1. Build APP參數，根據``scheme``以及``export_option``來決定是要發布**ad-hoc**或是**enterprise**版本的Distribution。
+  
+  2. 使用Firebase Distribution進行beta版本發佈
+  * 2-1 : 要發布的APP Firebase ID ，可以在``Firebase Dashboard``主頁或是``GoogleService-Info.plist``中找到
+  * 2-2 : 要發布的測試者mail，也可以用group取代(在Firebase Dashboard進行group設定)
+  * 2-3 : 發布版本註解
+  * 2-4 : Firebase cli path，預設通常為``/usr/local/bin/firebase``
+  * 如果使用CI環境，可新增以下變數，並把**token**放至CI Server的環境變數之下
+  ```
+  firebase_cli_token: ENV["FIREBASE_TOKEN"]
+  ```
+  3. 其他詳細Build APP參數Reference [Fastlane官網](https://docs.fastlane.tools/actions/build_ios_app/)
+  
+  4. 最後在command line執行fastlane即可進行測試
+  ```
+  $ fastlane ios [lane]
+  ```
+  
+  ***
+  ### Reference : ###
+  > [Firebase Fastlane Setting](https://firebase.google.com/docs/app-distribution/ios/distribute-fastlane)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

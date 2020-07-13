@@ -1,0 +1,27 @@
+createdAt: "2020-06-24T03:11:06.820Z"
+updatedAt: "2020-06-24T03:11:30.996Z"
+type: "MARKDOWN_NOTE"
+folder: "16904c786f4d8853e6f8"
+title: "Firebase"
+tags: []
+content: '''
+  # Firebase
+  隨著Google合併Fabric ，**且將在2020/3/31停止Fabric的各項服務服務** ，因此在這之前須將原本常用的功能整合移轉到Firebase 。以下步驟為**>使用Fastlane進行發布beta之轉移** ，步驟如下：
+  
+  
+  Step 1. 由Fabric整合至Firebase
+  
+  Step 2. 安裝Firebase CLI
+  
+  Step 3. 安裝Firebase SDK至iOS APP
+  
+  Step 4. 啟用各項服務，Crashlytics、Distribution
+  
+  ***
+  ### Reference : ###
+  > [Distribution with faslane](https://firebase.google.com/docs/app-distribution/ios/distribute-cli)
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

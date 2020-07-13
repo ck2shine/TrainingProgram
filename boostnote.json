@@ -19,6 +19,16 @@
       "key": "f013db434d4af5817738",
       "color": "#FF8E00",
       "name": "ToDoList"
+    },
+    {
+      "key": "16904c786f4d8853e6f8",
+      "color": "#E10051",
+      "name": "Firebase"
+    },
+    {
+      "key": "6be6d4a6ecbd9e94db12",
+      "color": "#E10051",
+      "name": "WWDC 2020"
     }
   ],
   "version": "1.0"

@@ -1,0 +1,84 @@
+createdAt: "2020-06-24T03:40:33.309Z"
+updatedAt: "2020-06-30T00:36:46.526Z"
+type: "MARKDOWN_NOTE"
+folder: "6be6d4a6ecbd9e94db12"
+title: "Platforms status of Union"
+tags: []
+content: '''
+  # Platforms status of Union
+  
+  * Find MY 
+    * developer.apple.com/find-my
+  * Apple Silicon
+    * improve speed 
+    * graphic performance
+    * power comsumption
+    * security
+  * safari
+    * update , more faster
+  * news , maps , message improved the design and performance , popcast , mustic 
+    * all because the Apple Silicon
+  * other software , like final cut pro , adobe photoshop are running fast in new mac 
+  * the important is that Microsoft has brought up their Office APPs  , ex : words and excel 
+  * Big sur OS and all their softwares is running greate on Apple Silicon 
+   * make machine-learning application so much faster
+  * DTK (Developer Transition Kit) for build both Inter and Silicon Apps
+  * need to create Universal APPs
+  * Apple Silicon base mac can run iOS APPS 
+  
+  ### iPadOS
+  * three column view
+    * active side bar 
+      * UIKit : SplitviewController
+      * Swift UI : NavigationView
+    * Side bar is build by
+      * UIKit : UICollectionView
+      * Swift UI : List
+    * new Data Picker
+      * UIDatePicker
+      * DatePicker
+    * new Color API
+      * UIColorPickerViewController
+      * ColorPicker
+  
+    easy function , but add more better using experience to iPadOS
+    
+    * LiDAR Scanner
+      * 3D depth Map , projector can measure the distance 
+      * AR is able to put virtual item behide the object
+      * Shapr3D , to quickly scan a room  , and generate a 3D Map
+    * Applie pencil
+      * handwriting to text  
+      * pencil kit
+      * swap the pencil to a context 
+  
+  ### iOS
+  * widges are avaialbe on Home Screen
+    * stack the widges
+    * system can intekkigently show which widge should be displayed
+      * build the time line to show the widges
+  * APP CLip
+    * APP CLip code
+    * leave out analytic library
+    * new target - > App clip
+  
+  ### Develop Tools
+  * Xcode 
+    * hide file bar
+    * side bar 
+    * document tab , dynamic document bar ( like android studio)
+    * scroll performance test , can see the detail of test
+    * Storekit can be test now!!!in app purchase 
+      * now it is possible to review the transcation in Xcode
+    * swift UI has a new tool bar  to speed up develop
+      * double click preview to jump the current code 
+    * the content of swift package is now able to contains resource and asserts
+    * drag UI componets to preview view 
+    * enable lazy to swiftUI faster load time and reduce memory usage for large collecntion view
+  
+  
+  ![e81665c9.png](:storage/b4d9565b-2d4b-438f-9ebd-4701b0c47b49/e81665c9.png)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
