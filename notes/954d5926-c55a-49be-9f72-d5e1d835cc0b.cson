@@ -1,0 +1,58 @@
+createdAt: "2020-07-13T05:45:44.790Z"
+updatedAt: "2020-07-13T06:25:39.900Z"
+type: "MARKDOWN_NOTE"
+folder: "22da80d07048cd7d4424"
+title: "Mobile APP QA Team Plan"
+tags: []
+content: '''
+  # Mobile APP QA Team Plan
+  ***
+  
+  #### 人員編制
+  依照公司內部APP支援平台進行人員配置，最低的要求為各平台至少一名QA工程師，大致上角色職掌區分如下：
+    * SQA人員
+    * Release Enginner
+  
+  ### 職責
+  依照角色進行專業分工 ，而最重要的SQA人員是**不分平台**(不區分負責iOS或是Android) ，而是依照專案導向區分專案負責人 **( Owner )** ，因此SQA在技能上必須要能夠擁有目前主要開發平台的基本開發能力。詳細的工作職責如下 : 
+  * SQA : 
+    1. 撰寫各個平台**UI Automation Test** 
+    2. 建置自動化測試平台框架 **( CI、CD、Pipeline )** 與維護工作
+  * Release Enginner : 
+    1. release版本之權限管控 **( Git Merge..etc)**
+    2. release版本標準制定與監控
+  
+  
+  人員編制 :  ios x1 , android x1 , release team leader x1
+  
+  職責 : 
+  
+  
+  iOS APP Architecture
+  
+  收到Spec , 做spec review 
+  
+  測試案例分級 : High , Medium , Low
+  測試階層 : 
+  
+  測試權責 : 
+  
+  RD : 
+  
+  QA : 負責UITesting , 
+  
+  
+  Unit test : 
+  Quick + Nimble
+  spec viewcontroller each function ex : table show , button text , action 
+  -> context 
+  正負向 - > it 
+  
+  
+  unit testing - > mock 
+  acceptance -> mock -> write db , api  
+  api mock , 
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
